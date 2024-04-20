@@ -1,9 +1,2 @@
-Nap Time 
-Go to gym 
-eat
-Eat lunch
-wash clothes 
-sleep
-relax
-Go to market 
-cycling
+Eat
+Sleep

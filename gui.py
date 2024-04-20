@@ -5,13 +5,16 @@ label=sg.Text("Type a to-do")
 input_box=sg.InputText(tooltip="Enter a todo",key="todo")
 add_button=sg.Button("Add")
 edit_button=sg.Button("Edit")
+complete_button = sg.Button("Complete")
+exit_button = sg.Button("Exit")
+
 list_box=sg.Listbox(values=functions.get_todos(),
                     key="todos",
                     enable_events=True,
                     size=[45,10])
 
 
-window=sg.Window("This is a todo App",layout=[[label],[input_box,add_button],[list_box,edit_button]])
+window=sg.Window("This is a todo App",layout=[[label],[input_box,add_button],[list_box,edit_button,complete_button],[exit_button]])
 
 
 while True:
@@ -25,6 +28,7 @@ while True:
         todo_list.append(todo)
         functions.write_todos(todo_list)
         window["todos"].update(values=functions.get_todos())
+        window["todo"].update(value="")
 
     elif event == "Edit":
         task_edited_to=value["todo"] + "\n"
@@ -40,7 +44,17 @@ while True:
     elif event == "todos":
         window["todo"].update(value=value["todos"][0])
     elif event == "Complete":
-        pass
+        todo_to_remove= value["todo"]
+        our_list=functions.get_todos()
+        index=our_list.index(todo_to_remove)
+        our_list.pop(index)
+
+        functions.write_todos(our_list)
+        window["todos"].update(values=functions.get_todos())
+        window["todo"].update(value="")
+
+    elif event == "Exit":
+        break
     elif event == sg.WIN_CLOSED:
         break
 
