@@ -1,2 +1,5 @@
-Eat
 Sleep
+Gym
+Bath
+Study
+Football
