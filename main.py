@@ -1,6 +1,7 @@
 import time
 
 now=time.strftime("%b %d,%Y %H:%M:%S")
+print("Time is below !!")
 print(f"It is now {now}")
 
 def get_todos():
